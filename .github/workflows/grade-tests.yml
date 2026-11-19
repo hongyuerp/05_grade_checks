@@ -1,6 +1,7 @@
 name: Grade checking tests
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - '**/*.py'

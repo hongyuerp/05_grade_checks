@@ -1,0 +1,23 @@
+name: Grade checking tests
+
+on:
+  push:
+    paths:
+      - '**/*.py'
+      - '.github/workflows/grade-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install pytest
+        run: python -m pip install pytest==9.2.0
+      - name: Run grade checking tests
+        run: python -m pytest -v
